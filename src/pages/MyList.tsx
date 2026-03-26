@@ -10,9 +10,11 @@ const MyList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const favorites = useSelector((state: RootState) => state.favorites.items);
+  const favorites = useSelector(
+    (state: RootState) => state.favorites.items
+  );
 
-  if (favorites.length === 0) {
+  if (!favorites || favorites.length === 0) {
     return (
       <div className="pt-20 h-[70vh] flex flex-col items-center justify-center text-center space-y-4 px-5">
         <h2 className="text-2xl font-semibold text-gray-300">
@@ -33,10 +35,16 @@ const MyList = () => {
   return (
     <div className="pt-20 px-5 space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-[#ffcc00]">My Favorites</h1>
+        <h1 className="text-2xl font-bold text-[#ffcc00]">
+          My Favorites
+        </h1>
 
         <button
-          onClick={() => dispatch(clearFavorites())}
+          onClick={() => {
+            if (confirm("Clear all favorites?")) {
+              dispatch(clearFavorites());
+            }
+          }}
           className="bg-red-600 text-white px-4 py-2 rounded-full text-sm hover:bg-red-700 transition-all duration-200"
         >
           Clear All
@@ -44,10 +52,10 @@ const MyList = () => {
       </div>
 
       <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-5 pt-2">
-  {favorites.map((movie: Movie) => (
-    <MovieCard key={movie.id} movie={movie} />
-  ))}
-</div>
+        {favorites.map((movie: Movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 };

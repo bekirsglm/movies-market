@@ -25,11 +25,17 @@ const Home = () => {
     error: errorTrending,
   } = useGetTrendingQuery();
 
-  if (errorPopular || errorTopRated || errorTrending) {
-    return <Error />
+  const isLoading =
+    loadingPopular || loadingTopRated || loadingTrending;
+
+  const isError =
+    errorPopular || errorTopRated || errorTrending;
+
+  if (isError) {
+    return <Error />;
   }
 
-  if (loadingPopular || loadingTopRated || loadingTrending) {
+  if (isLoading) {
     return (
       <div className="pt-20 space-y-12 px-5">
         {[1, 2, 3].map((section) => (
@@ -45,6 +51,19 @@ const Home = () => {
             </div>
           </div>
         ))}
+      </div>
+    );
+  }
+
+  const hasNoData =
+    !popular?.results?.length &&
+    !topRated?.results?.length &&
+    !trending?.results?.length;
+
+  if (hasNoData) {
+    return (
+      <div className="pt-20 flex items-center justify-center text-white">
+        No movies found
       </div>
     );
   }
