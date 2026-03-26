@@ -1,7 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Movie } from "../../types/movie";
-
 
 type FavoritesState = {
   items: Movie[];
@@ -28,21 +26,19 @@ const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    addFavorite: (state, action: PayloadAction<Movie>) => {
+    toggleFavorite: (state, action: PayloadAction<Movie>) => {
       const exists = state.items.find(
         (item) => item.id === action.payload.id
       );
 
-      if (!exists) {
+      if (exists) {
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
+        );
+      } else {
         state.items.push(action.payload);
-        saveToLocalStorage(state.items);
       }
-    },
 
-    removeFavorite: (state, action: PayloadAction<number>) => {
-      state.items = state.items.filter(
-        (item) => item.id !== action.payload
-      );
       saveToLocalStorage(state.items);
     },
 
@@ -53,7 +49,5 @@ const favoritesSlice = createSlice({
   },
 });
 
-export const { addFavorite, removeFavorite, clearFavorites } =
-  favoritesSlice.actions;
-
+export const { toggleFavorite, clearFavorites } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

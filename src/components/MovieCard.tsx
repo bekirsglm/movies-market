@@ -3,10 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../redux/store";
 
-import {
-  addFavorite,
-  removeFavorite,
-} from "../features/favorites/favoritesSlice";
+import { toggleFavorite } from "../features/favorites/favoritesSlice";
 import type { Movie } from "../types/movie";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
@@ -37,12 +34,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
       <div
         onClick={(e) => {
           e.stopPropagation();
-
-          if (isFavorite) {
-            dispatch(removeFavorite(movie.id));
-          } else {
-            dispatch(addFavorite(movie));
-          }
+          dispatch(toggleFavorite(movie));
         }}
         className="absolute top-2.5 right-2.5 z-20 bg-black/60 p-2 rounded-full backdrop-blur-sm"
       >

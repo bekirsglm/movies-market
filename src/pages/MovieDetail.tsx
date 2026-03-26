@@ -6,10 +6,7 @@ import { FaArrowLeft, FaHeart, FaRegHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../redux/store";
 import type { Movie } from "../types/movie";
-import {
-  addFavorite,
-  removeFavorite,
-} from "../features/favorites/favoritesSlice";
+import { toggleFavorite } from "../features/favorites/favoritesSlice";
 
 const MovieDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -64,11 +61,7 @@ const MovieDetail = () => {
         <div className="flex-1 space-y-4 relative">
           <div
             onClick={() => {
-              if (isFavorite) {
-                dispatch(removeFavorite(movie.id));
-              } else {
-                dispatch(addFavorite(movie));
-              }
+              dispatch(toggleFavorite(movie));
             }}
             className="absolute top-0 right-0 flex items-center gap-2 bg-gray-900/80 backdrop-blur-sm px-3 py-1.5 rounded-full cursor-pointer transition-all duration-200 hover:bg-gray-800 hover:scale-105"
           >
