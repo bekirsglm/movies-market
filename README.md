@@ -56,4 +56,5 @@ Değerlendirme sürecinde kolaylık sağlamak adına, gerekli olması durumunda 
 
 
 ## EKRAN GÖRÜNTÜSÜ
+![EkranKayd2026-03-26211449-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/ccbf545f-824a-4853-84e3-8d4138f7796c)
 
