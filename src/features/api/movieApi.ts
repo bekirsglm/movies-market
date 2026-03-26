@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL, API_KEY } from "../../constants/api";
 import type { Movie } from "../../types/movie";
 
-// 🎯 Liste response type
 type MoviesResponse = {
   page: number;
   results: Movie[];
@@ -15,18 +14,47 @@ export const movieApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
+  tagTypes: ["Movies"],
   endpoints: (builder) => ({
-    getPopular: builder.query<MoviesResponse, void>({
-      query: () => `/movie/popular?api_key=${API_KEY}`,
+    getPopular: builder.query<MoviesResponse, number | void>({
+      query: (page = 1) => ({
+        url: "/movie/popular",
+        params: {
+          api_key: API_KEY,
+          page,
+        },
+      }),
+      providesTags: ["Movies"],
     }),
-    getTopRated: builder.query<MoviesResponse, void>({
-      query: () => `/movie/top_rated?api_key=${API_KEY}`,
+
+    getTopRated: builder.query<MoviesResponse, number | void>({
+      query: (page = 1) => ({
+        url: "/movie/top_rated",
+        params: {
+          api_key: API_KEY,
+          page,
+        },
+      }),
+      providesTags: ["Movies"],
     }),
+
     getTrending: builder.query<MoviesResponse, void>({
-      query: () => `/trending/movie/week?api_key=${API_KEY}`,
+      query: () => ({
+        url: "/trending/movie/week",
+        params: {
+          api_key: API_KEY,
+        },
+      }),
+      providesTags: ["Movies"],
     }),
+
     getMovieDetail: builder.query<Movie, number>({
-      query: (id) => `/movie/${id}?api_key=${API_KEY}`,
+      query: (id) => ({
+        url: `/movie/${id}`,
+        params: {
+          api_key: API_KEY,
+        },
+      }),
     }),
   }),
 });
