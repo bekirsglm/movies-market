@@ -1,70 +1,59 @@
-# React + TypeScript + Vite
+# 🎬 Movies Market
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React, TypeScript, Redux Toolkit Query ve Tailwind CSS kullanılarak geliştirilmiş modern bir film keşif uygulamasıdır. Veri kaynağı olarak **The Movie Database (TMDB) API** kullanılmıştır.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Özellikler
 
-## Expanding the ESLint configuration
+- 🔥 **Popular**, **Top Rated** ve **Trending** film listeleri  
+- 🎥 Film detay sayfası (poster, açıklama, puan, çıkış tarihi)  
+- ❤️ Favori filmlere ekleme / çıkarma  
+- 💾 Favoriler **localStorage** ile kalıcıdır (refresh sonrası kaybolmaz)  
+- ⚡ Hızlı ve optimize veri çekme (**RTK Query**)  
+- 🎨 Responsive ve modern arayüz (**Tailwind CSS**)  
+- ⏳ Skeleton loading ile gelişmiş kullanıcı deneyimi  
+- ❌ API hataları için error handling  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠 Kullanılan Teknolojiler
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React + TypeScript**
+- **Redux Toolkit Query**
+- **React Router**
+- **Tailwind CSS**
+- **TMDB API**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📸 Uygulama Yapısı
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Ana Sayfa**
+  - Popular, Top Rated ve Trending listeleri
+- **Film Detay Sayfası**
+  - Film bilgileri ve detaylar
+- **Favoriler (My List)**
+  - Kullanıcının seçtiği filmler
+  - Kalıcı veri saklama
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# movies-market
+---
+
+## 📦 Kurulum
+
+Projeyi çalıştırmak için:
+
+git clone https://github.com/bekirsglm/movies-market.git
+cd movies-market
+npm install
+npm run dev
+
+## 🔑 API Key
+
+Projede kullanılan API key `.env` dosyasında tanımlıdır.
+
+Değerlendirme sürecinde kolaylık sağlamak adına, gerekli olması durumunda API key tarafımdan paylaşılmıştır.
+
+
+## EKRAN GÖRÜNTÜSÜ
+
