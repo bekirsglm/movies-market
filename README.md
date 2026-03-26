@@ -44,8 +44,11 @@ React, TypeScript, Redux Toolkit Query ve Tailwind CSS kullanılarak geliştiril
 Projeyi çalıştırmak için:
 
 git clone https://github.com/bekirsglm/movies-market.git
+
 cd movies-market
+
 npm install
+
 npm run dev
 
 ## 🔑 API Key
